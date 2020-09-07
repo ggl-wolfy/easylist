@@ -26,12 +26,12 @@ jobs:
       - name: update file and push to remote
         run: |
           git clone https://github.com/wwalexander/hostsblock.git
-          ./hostsblock/make
-          curl -sL https://easylist-downloads.adblockplus.org/easylistchina.txt | ./hostsblock/hostsblock - > easylist.txt
+          ./make
+          curl -sL https://easylist-downloads.adblockplus.org/easylistchina.txt | ./hostsblock - > easylist.txt
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -A
+          git add easylist.txt
           git commit -m "Update easylist.txt"
           git push
